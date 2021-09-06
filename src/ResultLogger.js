@@ -31,6 +31,14 @@ class ResultLogger {
     return this._logDir;
   }
 
+  set name(name) {
+    this._name = name;
+  }
+
+  get name() {
+    return this._name;
+  }
+
   set axePuppeteerTimeout(timeout) {
     this._axePuppeteerTimeout = timeout;
   }
@@ -227,6 +235,7 @@ class ResultLogger {
     }
 
     return {
+      name: this.name,
       url: result.finalUrl,
       requestedUrl: result.requestedUrl,
       timestamp: Date.now(),

@@ -1,3 +1,4 @@
+const shortHash = require("short-hash");
 const slugify = require("slugify");
 const lighthouse = require("lighthouse");
 const chromeLauncher = require("chrome-launcher");
@@ -10,7 +11,7 @@ const NUMBER_OF_RUNS = 3;
 const LOG_DIRECTORY = ".log";
 const AXE_PUPPETEER_TIMEOUT = 30000;
 
-async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}) {
+async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}, name = false) {
   let opts = Object.assign({
     writeLogs: true,
     logDirectory: LOG_DIRECTORY,
@@ -31,6 +32,7 @@ async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}) 
   let config = null;
 
   let resultLog = new ResultLogger();
+  resultLog.name = name || shortHash(JSON.stringify(opts));
   resultLog.logDirectory = opts.logDirectory;
   resultLog.writeLogs = opts.writeLogs;
   resultLog.readFromLogs = opts.readFromLogDirectory;
