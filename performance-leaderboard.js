@@ -19,7 +19,7 @@ async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}, 
     axePuppeteerTimeout: AXE_PUPPETEER_TIMEOUT,
     bypassAxe: [], // skip axe checks
     // onlyCategories: ["performance", "accessibility"],
-    chromeFlags: ['--headless', '--disable-dev-shm-usage'],
+    chromeFlags: ['--headless', '--disable-dev-shm-usage', '--no-sandbox'],
     skipAudits: ['full-page-screenshot'],
     freshChrome: "site", // or "run"
     launchOptions: {},
