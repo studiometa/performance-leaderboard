@@ -20,6 +20,7 @@ async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}, 
     bypassAxe: [], // skip axe checks
     // onlyCategories: ["performance", "accessibility"],
     chromeFlags: ['--headless', '--disable-dev-shm-usage'],
+    skipAudits: ['full-page-screenshot'],
     freshChrome: "site", // or "run"
     launchOptions: {},
     // callback before each lighthouse test
