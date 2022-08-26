@@ -17,6 +17,14 @@ class AxeTester {
     return this._readFromLogs;
   }
 
+  set chromeFlags(chromeFlags) {
+    this._chromeFlags = chromeFlags;
+  }
+
+  get chromeFlags() {
+    return this._chromeFlags;
+  }
+
   set writeLogs(doWrite) {
     this._writeLogs = doWrite;
   }
@@ -42,7 +50,7 @@ class AxeTester {
   }
 
   async start() {
-    this.browser = await puppeteer.launch();
+    this.browser = await puppeteer.launch({args: this.chromeFlags});
   }
 
   getLogFilename(url) {

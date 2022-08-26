@@ -37,6 +37,7 @@ async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}, 
   resultLog.name = name || shortHash(JSON.stringify(opts));
   resultLog.logDirectory = opts.logDirectory;
   resultLog.writeLogs = opts.writeLogs;
+  resultLog.axeChromeFlags = opts.chromeFlags;
   resultLog.readFromLogs = opts.readFromLogDirectory;
   resultLog.axePuppeteerTimeout = opts.axePuppeteerTimeout;
   resultLog.bypassAxe = opts.bypassAxe;

@@ -15,6 +15,14 @@ class ResultLogger {
     return this._readFromLogs;
   }
 
+  set axeChromeFlags(axeChromeFlags) {
+    this._axeChromeFlags = axeChromeFlags;
+  }
+
+  get axeChromeFlags() {
+    return this._axeChromeFlags;
+  }
+
   set writeLogs(doWrite) {
     this._writeLogs = doWrite;
   }
@@ -238,6 +246,7 @@ class ResultLogger {
       name: this.name,
       url: result.finalUrl,
       requestedUrl: result.requestedUrl,
+      logFilename: result.logFilename || false,
       timestamp: Date.now(),
       ranks: {},
       lighthouse: {
@@ -386,6 +395,7 @@ class ResultLogger {
     // Insert accessibilityRank into perfResults
     let a11yResults = [];
     let axeTester = new AxeTester();
+    axeTester.chromeFlags = this.axeChromeFlags;
     axeTester.logDirectory = this.logDirectory;
     axeTester.writeLogs = this.writeLogs;
     axeTester.readFromLogs = this.readFromLogs;
