@@ -31,7 +31,7 @@ async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}, 
     // deprecated
     resultHook: function(result) {}, // async compatible
   }, options);
-  let config = null;
+  let config = opts.lighthouseConfig || undefined;
 
   let resultLog = new ResultLogger();
   resultLog.name = name || shortHash(JSON.stringify(opts));
