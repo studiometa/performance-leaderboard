@@ -81,6 +81,7 @@ async function runLighthouse(urls, numberOfRuns = NUMBER_OF_RUNS, options = {}, 
         if(opts.readFromLogDirectory) {
           rawResult = readLog(filename, opts.logDirectory);
         } else {
+          console.log( `Run lighthouse with config: `, JSON.stringify(config) );
           rawResult = await lighthouse(url, opts, config).then(results => results.lhr);
 
           if(opts.writeLogs) {
